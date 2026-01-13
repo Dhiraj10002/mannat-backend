@@ -9,26 +9,33 @@ import contactRoutes from "./routes/contact.routes.js";
 const app = express();
 
 /* 🔥 ADD THIS */
+import cors from "cors";
+
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://mannat-frontend.vercel.app", // replace with your real Vercel URL
+  "http://localhost:3000",
+  "https://mannat-frontend.vercel.app",
+  "https://mannat-frontend-git-main-dhiraj10002s-projects.vercel.app"
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // allow requests with no origin (Postman, curl)
-      if (!origin) return callback(null, true);
-
+      if (!origin) return callback(null, true); // Postman / server-to-server
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
       }
-
-      callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// IMPORTANT
+app.options("*", cors());
 
 
 app.use(express.json());
