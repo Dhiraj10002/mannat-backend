@@ -18,7 +18,7 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
+      if (!origin) return callback(null, true); // Postman / server calls
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
@@ -30,9 +30,7 @@ app.use(
   })
 );
 
-// IMPORTANT: handle preflight
-app.options("*", cors());
-
+// ✅ Express 5 SAFE preflight handling
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
