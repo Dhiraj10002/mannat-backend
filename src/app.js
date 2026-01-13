@@ -10,8 +10,8 @@ const app = express();
 
 /* 🔥 ADD THIS */
 const allowedOrigins = [
-  "http://localhost:5173",            // local dev
-  "https://your-frontend.vercel.app", // production frontend
+  "http://localhost:5173",
+  "https://mannat-frontend.vercel.app", // replace with your real Vercel URL
 ];
 
 app.use(
