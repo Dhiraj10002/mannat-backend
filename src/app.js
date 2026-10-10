@@ -5,6 +5,7 @@ import authRoutes from "./routes/auth.routes.js";
 import galleryRoutes from "./routes/gallery.routes.js";
 import joinUsRoutes from "./routes/joinUs.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
+import donationRoutes from "./routes/donation.routes.js";
 
 const app = express();
 
@@ -37,5 +38,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/gallery", galleryRoutes);
 app.use("/api/join-us", joinUsRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/donations", donationRoutes);
 
 export default app;
